@@ -23,8 +23,8 @@ include('condb.php');
     </form>
         <tr>
             <th>รหัสประจำตัวนักเรียน</th>
-            <th>คะแนนพฤติกรรม</th>
-            <th>แต้มที่ถูกหัก</th>   
+            <th>คะแนนคงเหลือ</th>
+            <th>คะแนนที่ถูกหัก</th>   
             <th>เหตุผล</th>
         </tr>
         
@@ -33,7 +33,7 @@ include('condb.php');
         <?php
             if (isset($_POST["submit"])){
                 $str = $_POST["searchid"];
-                $class = "SELECT Student_id,point,demelitpoint,reason FROM  demelit NATURAL JOIN student WHERE Student_id='$str' ";
+                $class = "SELECT Student_id,point,demelitpoint,reason FROM  demelit NATURAL JOIN student WHERE Student_id='$str' ORDER BY point";
                 $result = mysqli_query($conn, $class);
                 while($row=mysqli_fetch_array($result)){
         ?>
